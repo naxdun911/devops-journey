@@ -10,3 +10,11 @@ Learning Cloud + DevOps engineering.
 - [ ] CI/CD with GitHub Actions
 - [ ] Terraform
 - [ ] AWS Solutions Architect
+
+
+
+
+
+
+
+

@@ -69,3 +69,111 @@ n: Jumps to the next occurrence of the search term.
 N: Jumps to the previous occurrence.
 
 
+
+# --- history ---
+This is used to see the command history
+
+Searching Your History:
+One of the most powerful history shortcuts is Ctrl-R. This initiates a reverse search. After pressing Ctrl-R, start typing any part of the command you're looking for, and the shell will display the most recent match. You can press Ctrl-R repeatedly to cycle through older matches. Once you find the command you want, just press Enter to execute it.
+
+
+
+# --- cp ---
+
+cp file.txt /home/naxdun/linux/files   --> file and dest.
+cp file.txt /home/naxdun/linux/files/new-file-name    -->add a new file name
+
+cp file*.txt /home/naxdun/linux/files    --> Use wildcard (*) for bulk copying
+
+cp -r folder1 /home/naxdun/linux    --> to copy folders
+cp -i file.txt /home/naxdun/linux/files    --> ask before overwrite a file
+cp -f file.txt /home/naxdun/linux/files    --> overwrite without asking
+cp -p file.txt /hommv file_1 file_2 /somedirectorye/naxdun/linux/files    --> preserve data like timestamp
+
+
+# --- mv ---
+used to move and rename files
+
+mv oldfile newfile    -->works for files and directories
+
+mv test1 ../files    -->file path starts from the parent directory
+
+mv -r    -->    unlike cp, mv doesnt need -r to move directories
+mv file_1 file_2 /somedirectory    --> move multiple files
+
+A useful option for this is linux mv -t, which allows you to specify the target directory first. This can be clearer when moving many files.
+    >>mv -t /somedirectory file_1 file_2
+
+Important Options for the mv Command:
+    By default, if you move a file to a destination where a file with the same name already exists, mv will overwrite it without warning. To prevent accidental data loss, you can use the following options:
+
+    -i (interactive): This is a crucial safety feature. It will prompt you for confirmation before overwriting any existing file.
+        mv -i source_file destination_directory
+
+    -b (backup): If you intend to overwrite a file but want to keep the old version, this option creates a backup of the destination file. The backup is typically renamed with a tilde (~) suffix.
+        mv -b file1 directory_with_file1
+
+    -v (verbose): This option makes the mv command print out what it is doing, showing each file being moved or renamed.
+        mv -v file1 file2 /somedirectory
+
+
+
+# --- mkdir ---
+
+mkdir -p books/hemmingway/favorites    -->to create nested directories
+
+
+
+# --- rm ---
+used for deleting
+
+rm file1
+rm folder1    --> doent work
+rm -r folder    --> delete folder and its content
+rmdir folder1    --> delete empty folder
+rm -f file1    --> forcefully delete any protected file
+rm -rf    --> the dangerous combination
+rm i file1    --> prompts before deleting each file
+
+
+
+# --- find ---
+to find files
+
+find /home -name puppies.jpg    --> will search for files names puppies.jpg inside home and all the sub directories of it
+
+
+
+# --- help ---
+
+echo help    --> get details of echo command
+ls --help    --> get details of any other command
+
+
+
+# --- man ---
+get the manual for every command
+
+man ls
+
+
+
+# --- whatis ---
+give an one line description for all commands
+
+whatis touch
+
+
+
+# --- alias ---
+giving a nickname for long commands
+
+alias ll='ls -la'    --> this will be gone after closing the terminal
+
+Alisases can make permanent.. google for it hehe
+
+
+
+
+
+

@@ -174,6 +174,71 @@ Alisases can make permanent.. google for it hehe
 
 
 
+# --- stdout (echo) ---
+used to display sometihng
+
+>>echo hello world
+>>echo Hello World > hello.txt    --> instead of printing text, it creates a file and save it. If the file exists, it overwrites it.
+>>echo Hello World >> hello.txt    --> appends new content
+
+# --- stdin (cat) ---
+
+Practical Example with cat stdin:
+    Let's revisit the peanuts.txt file from the previous lesson, which contains the text "Hello World". Consider the following command:
+        cat < peanuts.txt > banana.txt
+    
+    Here’s a breakdown of what happens:
+        The < peanuts.txt part tells the shell to redirect stdin for the cat command, making it read from peanuts.txt instead of the keyboard.
+        The cat command processes its input. In this case, using cat stdin means it reads the content of peanuts.txt.
+        The > banana.txt part redirects the standard output of cat to a new file named banana.txt.
+
+
+
+# --- stderr ---
+
+Understanding File Descriptors
+To manage I/O streams like stdin, stdout, and stderr, the system uses file descriptors. A file descriptor is a non-negative number that the kernel uses to identify an open file or stream. The default file descriptors are:
+
+0: stdin (standard input)
+1: stdout (standard output)
+2: stderr (standard error)
+
+>>cat /etc/hosts > output.txt    --> Redirect output straightly to a file
+>>cat /etc/fakefile > output.txt    --> No output.. By default, only stdout saves in the file, not the stderr s
+>>cat /etc/fakefile 2> errors.txt    --> Use 2 for std err
+
+-Redirect Both stdout and stderr-
+Very commonly used in scripts:
+    >>cat /etc/hosts /etc/fakefile > output.txt 2> errors.txt
+Normal output → output.txt
+Errors → errors.txt
+
+Or send both to the same file:
+    >>cat /etc/hosts /etc/fakefile > all-output.txt 2>&1
+
+
+
+# --- pipe ---
+This uses pipe operator '|' to combines the commands.
+The output of the left side of the operator is directly sent into the RHS of the operator
+
+ls -la /etc | less
+
+What Does | Actually Do?
+The pipe redirects the output of the left command to become the input of the right command.
+
+
+
+# --- tee ---
+tee is used to log and monitor at same time.
+
+>>ls | tee peanuts.txt
+>>echo "Hello" | tee output.txt --> the output of echo is directly sent to the tee. It displays and writes it.
+
+
+Combining pipe and tee
+>> ls -la /etc | tee etc_listing.txt | grep "conf"
+
 
 
 

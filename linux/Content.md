@@ -395,3 +395,29 @@ Used to search within a file
 >>grep -o fox sample.txt    --> Show only the match
 >>env | grep -i User    --> Can be used in pipelining
 
+
+
+# --- regex ---
+regex = regular expression
+
+| Symbol | Meaning                         |    |
+| ------ | ------------------------------- | -- |
+| `.`    | Any single character            |    |
+| `*`    | 0 or more of previous character |    |
+| `+`    | 1 or more of previous character |    |
+| `?`    | 0 or 1 of previous character    |    |
+| `^`    | Start of line                   |    |
+| `$`    | End of line                     |    |
+| `[]`   | Character set                   |    |
+| `[^]`  | Negated set                     |    |
+| `      | `                               | OR |
+| `()`   | Grouping                        |    |
+
+>>grep "^apple" file.txt    --> Match any line starting with apple
+>>grep "banana$" file.txt     --> Match lines ending with banana
+>>grep "b.nana" file.txt    --> Match any single character
+# matches banana, bnana, bxnana, etc.
+
+>>grep "[a-z]" file.txt    --> matches any lowercase letter
+>>grep "[0-9]" file.txt    --> matches digits
+

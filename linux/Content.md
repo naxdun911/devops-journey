@@ -241,4 +241,28 @@ Combining pipe and tee
 
 
 
+# --- cut ---
+
+>>cut -c 5 sample.txt    --> Just cut the 5h character
+>>cut -f 2 sample.txt    --> Cut the second field. Fields are seperated by delimeters. 
+                             Default Delimeter is TAB space.
+>>cut -f 1 -d ";" sample.txt     --> We can set the delimeter as we want.
+
+
+
+# --- paste ---
+
+Let's combine all these lines into one line:
+
+>>paste -s sample2.txt    --> The default delimiter for paste is TAB, so now there is one line with TABs separating each word.
+
+Let's change this delimiter (-d) to something a little more readable:
+
+>>paste -d ' ' -s sample2.txt    --> Now everything should be on one line delimited by spaces.
+
+
+
+
+
+
 

@@ -1,0 +1,3 @@
+The grep command is arguably the most essential text-processing tool you will use in a Linux environment. 
+
+It allows you to search through files or streams of data for lines that match a specific pattern. Instead of manually digging through countless lines of text to find a specific string or configuration, you can simply use grep to do the heavy lifting.

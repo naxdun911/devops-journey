@@ -49,6 +49,13 @@ cat options...
 -b: This option numbers only the non-empty output lines.
 
 
+cat <<end> file.txt
+hello
+world 
+end    --> tpye end in a new line to end entering
+
+
+
 
 # --- less ---
 Used to view large files.. 
@@ -262,7 +269,129 @@ Let's change this delimiter (-d) to something a little more readable:
 
 
 
+# --- head ---
+Used to view the firstr few lines of a very large file
+
+head Big-file..txt
+head -n 15 Big-file.txt    --> to set the number of lines
 
 
 
+# --- tail ---
+Used to view the last entries of a file. Opposite of "head".
+
+tail Big-file..txt
+tail -n 15 Big-file.txt    --> to set the number of lines
+
+
+
+Real-Time File Monitoring with tail -f:
+One of the most powerful features of the tail command is its ability to monitor files in real-time. This is achieved with the -f (follow) flag. When you use tail -f, the command doesn't exit after displaying the last few lines. Instead, it waits for new data to be appended to the file and prints it to the screen as it arrives.
+
+>>tail -f /var/log/syslog    --> Wait for new lines to be apppeared in the file and displays it.
+
+
+
+# --- expand ---
+This feature breaks down a TAB space into 8 spaces.. which expands the size of a file
+
+>>expand smaple.txt
+
+>>expand sample.txt > result.txt    --> save the output in a new file
+
+
+To Unexpand:
+    >>unexpand -a result.txt    --> Do the reverse of expand
+
+
+
+# --- join ---
+
+file1.txt:
+    Anna 25
+    John 32
+    Bush 55
+
+file2.txt:
+    Anna Colombo
+    John London
+    Bush Tokyo
+
+>>join file1.txt file2.txt
+    Anna 25 Colombo
+    John 32 London
+    BUsh 55 Tokyo
+
+# --- split ---
+By default this split a large file into files of 1000 lines.
+New file names will be xaa, xab, xac...
+
+>> split somefile.txt
+>> split -l 1 somefile.txt    --> now a file conatain only one line
+
+
+
+# --- sort ---
+
+sort file.txt    --> sort in alphabetical order
+sort -r file.txt    --> Reverse order
+
+
+
+# --- tr ---
+Used to manipulate text(Translate) 
+
+>>echo "hello world" | tr a-z A-Z
+HELLO WORLD
+
+>>echo "My address is 123 Main Street" | tr -d '0-9'    --> Delete
+My address is  Main Street
+
+
+
+# --- uniq ---
+Removes the duplicates
+
+>>uniq file.txt    --> Only removes the duplicates which are adjacent
+>>uniq -c file.txt    --> Count the duplicates
+>>sort file.txt | uniq -c file.txt    --> This pipelining is wrong.. uniq doesnt use rhe previous output
+>>sort file.txt | uniq -c    --> Correct version
+>>sort file.txt | uniq     --> No counting
+
+
+
+# --- wc ---
+Used to get the word count of a file
+
+>>wc file.txt
+ 8 10 70 test.txt
+The output displays three numbers followed by the filename. From left to right, these numbers represent:
+    1.The number of lines.
+    2.The number of words (the Linux word count).
+    3.The number of bytes.
+
+Getting Specific Counts:
+Often, you only need one piece of information. You can use options to display a specific count instead of all three.
+    -l: Shows only the line count.
+    -w: Shows only the word count.
+    -c: Shows only the byte count.
+
+
+
+# --- nl ---
+Used to number the lines of a file.
+
+nl file.txt
+
+
+
+# --- grep ---
+Used to search within a file
+
+>>grep to example.txt
+>>grep -e "to" example.txt    --> Used to say what we are exactly looking for.
+>>grep -i somepattern somefile    --> Case-Sensitive search
+>>grep -c fox sample.txt    --> How many lines with the required search
+>>grep -o fox sample.txt    --> Show only the match
+>>env | grep -i User    --> Can be used in pipelining
 

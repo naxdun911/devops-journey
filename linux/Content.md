@@ -468,7 +468,7 @@ Editing:
         . – Repeats the last change you made, a very powerful and efficient command.
 
 Undoing and Redoing Changes:
-While editing, you might need to reverse an action or bring it back. These commands are used in Normal mode (press Esc to enter).
+While editing, you might need to reverse an action or bring it baccat /etc/passwdk. These commands are used in Normal mode (press Esc to enter).
     u - Undoes your last action.
     Ctrl-r - Redoes the last action that you undid.
 
@@ -479,6 +479,27 @@ This is a incredibly powerful text editing tool and it has a GUI.
 Learn about this when needed.
 
 >>emacs    --> To open the text editor
+
+
+
+# User Management
+
+/etc/passwd :
+
+>>cat /etc/passwd    --> This this give the details of the users.. 
+root:x:0:0:root:/root:/bin/bash    --> Each field has sepecate meaning
+                                        Passwords are encrypted
+
+/etc/shadow :
+
+>>sudo cat /etc/passwd    -->This needs superuser access
+                             Used to contain the encrypted details of passwords
+
+
+>>sudo useradd bob    --> Add a new user
+>>sudo userdel bob    --> Delete user
+>>passwd bob    -->Chsnge password
+
 
 
 

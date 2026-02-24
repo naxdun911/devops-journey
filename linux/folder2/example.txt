@@ -1,0 +1,9 @@
+Final Reflection
+
+Transfer ransfer learning speeds up model development by reusing knowledge from pretrained networks, allowing us to achieve good performance with less data and shorter training times. Early layers already capture general visual features like edges and textures, so we only need tFinal Reflection train or fine-tune the later layers for the specific task. However, it can fail when the new dataset is very different from the pretrained data or has unique patterns that the pretrained features cannot represent.
+
+heyy this is meee
+
+
+
+

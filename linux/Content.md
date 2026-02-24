@@ -421,3 +421,18 @@ regex = regular expression
 >>grep "[a-z]" file.txt    --> matches any lowercase letter
 >>grep "[0-9]" file.txt    --> matches digits
 
+
+
+# --- vim ---
+
+Search patterns: 
+    -press ESC
+    -/fox     -->to search form top
+    -?fox     -->to searhc from the bottom
+    -Use n & N to navigate
+
+
+
+
+
+

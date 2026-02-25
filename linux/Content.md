@@ -500,8 +500,113 @@ root:x:0:0:root:/root:/bin/bash    --> Each field has sepecate meaning
 >>sudo userdel bob    --> Delete user
 >>passwd bob    -->Chsnge password
 
+# File Permissions
+
+Permissions: 
+    r: Read permission.
+    w: Write permission.
+    x: Execute permission.
+    -: No permission granted.
 
 
+Using Symbolic Mode:
+    u (user/owner)
+    g (group)
+    o (others)
+    a (all: user, group, and others)
+
+# --- chmod ---
+    
+>>chmod u+x myfile
+>>chmod g-rw myfile
+>>chmod uo + rx myfile
+
+Using Numerical (Octal) Mode:
+    4: read (r)
+    2: write (w)
+    1: execute (x)
+
+    To set a permission set, you add the numbers together. For example, to grant read, write, and execute permissions, you would use 4 + 2 + 1 = 7
+
+    >>chmod 755 myfile
+    7 (User): 4 + 2 + 1 -> The user gets read, write, and execute permissions (rwx).
+    5 (Group): 4 + 0 + 1 -> The group gets read and execute permissions (r-x).
+    5 (Others): 4 + 0 + 1 -> All other users get read and execute permissions (r-x).
+
+
+
+# Changing Ownership
+
+User Ownership:
+
+    --- chown (change ownership) ---
+    >>sudo chown john myfile
+
+Group Ownership:
+
+    --- chgrp (change group) ---
+    >>sudo chgrp whales myfile
+
+Both User and Group:
+
+    >>sudo chown patty:whales myfile
+
+
+
+# --- umask ---
+user file creation mask
+
+>>umask    -->yo check current umask
+
+0    0    0    2
+|    |    |    |
+|    |    |    └── others
+|    |    └─────── group
+|    └──────────── owner (user)
+└───────────────── special bits (setuid, setgid, sticky)
+
+The basic idea: When you create a new file or directory, Linux assigns it default permissions. umask controls how restrictive those defaults are by "masking out" (removing) certain permissions.
+
+The default maximums are:
+    Files: 666 (rw-rw-rw-)
+    Directories: 777 (rwxrwxrwx)
+
+umask subtracts from those. A common umask value is 022. So:
+    File: 666 - 022 = 644 (rw-r--r--)
+    Directory: 777 - 022 = 755 (rwxr-xr-x)
+
+>>umask 027    --> when we use 3 digits, first digit is assumed as 0.. 0027
+
+
+
+# setuid and setgid
+
+setuid-->SUID and setguid-->SGID
+
+4 = setuid
+2 = setgid
+1 = sticky bit
+
+SUID:
+    -rwsrwxrwx  --> Notice the s in permissions.. It gives the executions and owner permissions to the user.
+                    So the user dont need to come and enter their password.
+
+    >>chmod 4777 file.txt --> 4 to set suid.. can use (6-->4+2 for set suid and guid)
+    >>chmod u+s myfile
+
+GUID:
+    -rwxrwsrwx    --> group has GUID
+
+    >>chmod 2777    --> notice s in group permissions
+    >>chmod g+s myfile
+
+The Sticky Bit
+Beyond the standard read, write, and execute permissions, Linux offers special permissions for advanced access control. The last of these special permissions we will cover is the sticky bit.
+
+What is the Sticky Bit?
+The sticky bit is a permission setting that can be applied to a directory. When a directory has the sticky bit set, files within that directory can only be deleted or renamed by the file's owner, the directory's owner, or the root user. This is particularly useful for shared directories where multiple users need to create and manage their own files without interfering with others. This concept is a key part of Unix file permissions sticky bit management.
+
+>>chmod 1755 my_shared_dir
 
 
 

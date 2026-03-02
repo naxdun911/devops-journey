@@ -610,4 +610,74 @@ The sticky bit is a permission setting that can be applied to a directory. When 
 
 
 
+# --- ps ---
 
+>> ps                    --> Show processes running in current terminal only
+
+>> ps a                  --> Show processes from all users (with terminal)
+>> ps u                  --> Show processes in user friendly format (cpu, mem, user)
+>> ps x                  --> Show processes without a terminal (background processes)
+>> ps aux                --> a+u+x combined --> Show all processes from all users with details
+
+>> ps -e                 --> Show every process on the system
+>> ps -f                 --> Show full format (PPID, UID, start time)
+>> ps -ef                --> e+f combined --> Show every process with full details
+
+>> top                   --> Live real time view of running processes (auto refreshes)
+
+
+# --- kill ---
+
+>> kill PID              --> Send default signal (SIGTERM) to a process --> asks process to stop gracefully
+>> kill -9 PID           --> Send SIGKILL --> force kill immediately, no cleanup
+>> kill -15 PID          --> Send SIGTERM --> graceful stop (same as default)
+>> kill -l               --> List all available signals
+>> killall processname   --> Kill all processes with that name
+>> pkill processname     --> Kill process by name (partial match works too)
+
+1   --> SIGHUP   --> reload/restart the process
+2   --> SIGINT   --> interrupt (same as Ctrl+C)
+9   --> SIGKILL  --> force kill (cannot be ignored by process)
+15  --> SIGTERM  --> graceful terminate (can be ignored by process)
+
+How to get PID:
+    >> ps aux | grep processname   --> find PID from process list
+    >> pgrep processname           --> directly gives you the PID
+    >> pidof processname           --> another way to get PID by name
+
+Difference between kill -9 and kill -15:
+    kill -15   --> politely asks process to stop --> process can save data and cleanup
+    kill -9    --> forcefully kills --> no cleanup, use only when -15 doesn't work
+
+
+# --- niceness ---
+
+Quick niceness recap:
+    -20   --> highest priority (gets more CPU time)
+    0    --> default niceness for normal processes
+    +19   --> lowest priority (gets less CPU time)
+
+Setting niceness:
+    >> nice -n -20 command        --> start a command with niceness -20 (needs sudo)
+    >> renice -n -20 -p PID       --> change niceness of already running process
+    >> ps -el | grep PID          --> see niceness value of a process (NI column)
+    >> top                        --> NI column shows niceness of each process
+
+One thing to note:
+    normal user    --> can only set niceness 0 to +19 (cannot set negative)
+    root/sudo      --> can set negative niceness values like -20
+
+
+>>ls /proc    -->  Use this to check about all the running processes..
+
+# Job Control
+Job control is the ability to manage multiple processes from a single terminal. Normally when you run a command, it takes over your terminal and you have to wait for it to finish. Job control lets you run processes in the background, pause them, bring them back, and switch between them — all from the same terminal session.
+When you add & at the end of a command, it runs in the background and your terminal is immediately free to use. When a job is running in the foreground and you press Ctrl+Z, it gets suspended (paused) and you get your terminal back. From there you can either bring it back to the foreground or let it continue running in the background.
+Each job gets a job number like [1], [2] etc. This is different from PID — job numbers are simpler and only exist within your current terminal session. When you close the terminal, all jobs tied to it are gone.
+
+Commands:
+>> command &       --> start a command directly in background
+>> jobs            --> list all current jobs with their status
+>> fg %1           --> bring job number 1 to foreground
+>> bg %1           --> resume stopped job number 1 in background
+>> kill %1         --> kill job number 1

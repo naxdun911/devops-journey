@@ -1,4 +1,7 @@
+require('dotenv').config();
+
 const express = require('express');
+const port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -49,4 +52,4 @@ app.delete('/api/posts/:id', (req, res) => {
     res.json({ message: 'Post deleted successfully' });
 });
 
-app.listen(8000, () => console.log('Server running on port 8000'));
+app.listen(port, () => console.log(`Server running on port ${port}`));

@@ -681,3 +681,114 @@ Commands:
 >> fg %1           --> bring job number 1 to foreground
 >> bg %1           --> resume stopped job number 1 in background
 >> kill %1         --> kill job number 1
+
+
+
+# Packages 
+
+# ---tar and gzip---
+
+
+Archiving & Compression:
+
+    tar is used to bundle multiple files and folders into a single file (called a tarball). By itself tar does not compress, it just packages. gzip is used to compress a single file to reduce its size. They are often used together — tar to bundle, gzip to compress.
+
+tar commands:
+>> tar -cvf archive.tar folder/       --> create a tar archive
+>> tar -xvf archive.tar               --> extract a tar archive
+>> tar -tvf archive.tar               --> list contents without extracting
+>> tar -cvzf archive.tar.gz folder/   --> create tar and compress with gzip together
+>> tar -xvzf archive.tar.gz           --> extract a gzip compressed tar
+
+gzip commands:
+>> gzip file          --> compress a file (original file is replaced)
+>> gzip -d file.gz    --> decompress a gzip file
+>> gunzip file.gz     --> same as gzip -d
+>> gzip -k file       --> compress but keep original file too
+>> gzip -l file.gz    --> show compression info
+
+Options explained:
+c   --> create archive
+x   --> extract archive
+v   --> verbose (show progress)
+f   --> specify filename
+z   --> use gzip compression
+k   --> keep original file
+d   --> decompress
+
+Simple rule — if you see .tar it is just bundled, if you see .tar.gz it is bundled and compressed.
+
+
+# ---rpm and dpkg---
+
+Package Management (Offline)
+rpm and dpkg are low level package managers that install packages directly from a file. They do not connect to the internet or resolve dependencies automatically — you need to have the package file already downloaded. rpm is used on Red Hat based systems (RHEL, CentOS, Fedora) and dpkg is used on Debian based systems (Ubuntu, Kali, Mint).
+
+rpm commands:
+>> rpm -ivh package.rpm        --> install a package
+>> rpm -uvh package.rpm        --> upgrade a package
+>> rpm -evh package.rpm        --> remove a package
+>> rpm -q packagename          --> check if a package is installed
+>> rpm -qa                     --> list all installed packages
+>> rpm -qi packagename         --> show detailed info about a package
+>> rpm -ql packagename         --> list files installed by a package
+
+dpkg commands:
+>> dpkg -i package.deb         --> install a package
+>> dpkg -r packagename         --> remove a package
+>> dpkg -P packagename         --> remove package and its config files
+>> dpkg -l                     --> list all installed packages
+>> dpkg -s packagename         --> show status and info of a package
+>> dpkg -L packagename         --> list files installed by a package
+>> dpkg --configure -a         --> fix broken/unconfigured packages
+
+Options explained:
+i   --> install
+u   --> upgrade
+e   --> erase (remove)
+v   --> verbose
+h   --> show progress bar (hash)
+q   --> query
+a   --> all
+l   --> list
+s   --> status
+L   --> list files
+P   --> purge (remove with config)
+
+
+# ---yum and apt---
+
+Package Management (Online)
+yum and apt are high level package managers that sit on top of rpm and dpkg. The big difference from rpm/dpkg is they connect to online repositories and automatically handle dependencies — if a package needs 5 other packages to work, they download and install all of them for you.
+yum is for Red Hat based systems and apt is for Debian based systems.
+
+yum commands:
+>> yum install packagename      --> install a package
+>> yum remove packagename       --> remove a package
+>> yum update                   --> update all packages
+>> yum update packagename       --> update a specific package
+>> yum search packagename       --> search for a package
+>> yum info packagename         --> show info about a package
+>> yum list installed           --> list all installed packages
+
+apt commands:
+>> apt install packagename      --> install a package
+>> apt remove packagename       --> remove a package
+>> apt update                   --> update package list (not the packages)
+>> apt upgrade                  --> upgrade all installed packages
+>> apt search packagename       --> search for a package
+>> apt show packagename         --> show info about a package
+>> apt list --installed         --> list all installed packages
+>> apt autoremove               --> remove unused dependencies
+
+One important thing about apt:
+>> apt update     --> only refreshes the package list from internet
+>> apt upgrade    --> actually installs the updates
+
+
+
+
+
+
+
+

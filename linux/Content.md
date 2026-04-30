@@ -671,6 +671,7 @@ One thing to note:
 >>ls /proc    -->  Use this to check about all the running processes..
 
 # Job Control
+
 Job control is the ability to manage multiple processes from a single terminal. Normally when you run a command, it takes over your terminal and you have to wait for it to finish. Job control lets you run processes in the background, pause them, bring them back, and switch between them — all from the same terminal session.
 When you add & at the end of a command, it runs in the background and your terminal is immediately free to use. When a job is running in the foreground and you press Ctrl+Z, it gets suspended (paused) and you get your terminal back. From there you can either bring it back to the foreground or let it continue running in the background.
 Each job gets a job number like [1], [2] etc. This is different from PID — job numbers are simpler and only exist within your current terminal session. When you close the terminal, all jobs tied to it are gone.

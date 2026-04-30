@@ -759,6 +759,7 @@ P   --> purge (remove with config)
 # ---yum and apt---
 
 Package Management (Online)
+
 yum and apt are high level package managers that sit on top of rpm and dpkg. The big difference from rpm/dpkg is they connect to online repositories and automatically handle dependencies — if a package needs 5 other packages to work, they download and install all of them for you.
 yum is for Red Hat based systems and apt is for Debian based systems.
 

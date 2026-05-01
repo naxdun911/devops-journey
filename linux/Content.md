@@ -284,7 +284,6 @@ tail Big-file..txt
 tail -n 15 Big-file.txt    --> to set the number of lines
 
 
-
 Real-Time File Monitoring with tail -f:
 One of the most powerful features of the tail command is its ability to monitor files in real-time. This is achieved with the -f (follow) flag. When you use tail -f, the command doesn't exit after displaying the last few lines. Instead, it waits for new data to be appended to the file and prints it to the screen as it arrives.
 

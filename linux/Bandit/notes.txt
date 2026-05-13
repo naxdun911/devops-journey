@@ -71,6 +71,22 @@ Level 9 --> Level 10
 Bandit 10
 FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 
+-------------------------------------------------------------------
+
+Level 10 --> Level 11
+
+Bandit 11
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+-------------------------------------------------------------------
+
+Level 11 --> Level 12
+
+Bandit 12
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+Bandit 13
+FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 
 
 

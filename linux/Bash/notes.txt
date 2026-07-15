@@ -1,0 +1,16 @@
+======How to run a scripts==========
+
+test.sh
+    #!/bin/sh
+
+    echo Hello World
+
+    message="Helloooooooo"
+    echo $message
+
+
+chmod 755 test.sh
+./test.sh
+
+
+

@@ -109,7 +109,7 @@ mv -r    -->    unlike cp, mv doesnt need -r to move directories
 mv file_1 file_2 /somedirectory    --> move multiple files
 
 A useful option for this is linux mv -t, which allows you to specify the target directory first. This can be clearer when moving many files.
-    >>mv -t /somedirectory file_1 file_2
+    >> mv -t /somedirectory file_1 file_2
 
 Important Options for the mv Command:
     By default, if you move a file to a destination where a file with the same name already exists, mv will overwrite it without warning. To prevent accidental data loss, you can use the following options:

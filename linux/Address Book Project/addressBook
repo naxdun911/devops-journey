@@ -1,0 +1,45 @@
+#!/bin/bash
+
+while true
+do
+    echo "                        "
+    echo "===== ADDRESS BOOK ====="
+    echo "1. Add user"
+    echo "2. Delete user"
+    echo "3. Search user"
+    echo "4. Display all users"
+    echo "5. Edit users"
+    echo "6. Exit"
+
+    read -r -p "Enter your choice: " choice
+
+    case $choice in
+        1)
+            echo "Adding user..."
+	    ./addUser
+            ;;
+        2)
+            echo "Deleting user..."
+	    ./deleteUser
+            ;;
+        3)
+            echo "Searching user..."
+	    ./searchUser
+            ;;
+        4)
+            echo "Displaying all users..."
+    	    ./displayUsers
+            ;;
+        5)
+            echo "Editing users"
+            ./editUser
+	    ;;
+	6)
+	    echo "Good Bye!!"
+	    break
+	    ;;
+        *)
+            echo "Invalid choice!"
+            ;;
+    esac
+done

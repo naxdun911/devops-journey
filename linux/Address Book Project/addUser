@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "---Enter detais here---"
+echo "Name:"
+read -r name
+
+echo "Age:"
+read -r age
+
+echo "Phone Number:"
+read -r phone_number
+
+echo "Email"
+read -r email
+
+echo "$name:$age:$phone_number:$email" >> address_book.txt
+
+

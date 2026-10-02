@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Enter user's Name:"
+read -r user
+
+echo "Here are the details >>"
+cat address_book.txt | grep $user | sed 's/:/ | /g'
+
+
+
+
+
+

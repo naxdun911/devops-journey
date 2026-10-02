@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Enter the name:"
+read -r name
+
+echo "Enter age:"
+read -r age
+
+echo "Enter phone number"
+read -r phone_number
+
+echo "Enter email:"
+read -r email
+
+
+sed -i "/$name/c\\$name:$age:$phone_number:$email" address_book.txt

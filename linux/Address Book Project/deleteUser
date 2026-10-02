@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -r -p "Enter the name: " user
+
+sed -i "/$user/d" address_book.txt
